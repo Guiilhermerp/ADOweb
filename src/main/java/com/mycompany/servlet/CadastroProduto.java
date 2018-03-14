@@ -75,16 +75,15 @@ public class CadastroProduto extends HttpServlet {
 
         }
 
-        
+        Produto produto = new Produto(quantidade, nome, descricao, preco_venda, preco_venda, quantidade, dt_cadastro);
 
         produto.setNome(nome);
-        produto.set
-        produto.setEditora(editora);
-        produto.setAno(ano);
+        produto.setDescricao(descricao);
+        produto.setPreco_compra(preco_venda);
         produto.setQuantidade(quantidade);
-        produto.setPreco(preco);
+        produto.setPreco_venda(preco_venda);
         String erro = "";
-        erro = com.aztec.koob.validadores.ValidadorProduto.validarProduto(produto);
+        
         if (erro.equals("")) {
             try {
                 ProdutoDAO.inserirProduto(produto);

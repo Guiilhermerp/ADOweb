@@ -41,16 +41,14 @@ public class EditarProduto extends HttpServlet {
 
         }
 
-        int id = Integer.parseInt(request.getParameter("idProduto"));
         String nome = request.getParameter("nome");
-        int estoque = Integer.parseInt(request.getParameter("estoque"));
-        String autor = request.getParameter("autor");
-        String editora = request.getParameter("editora");
-        String ano = request.getParameter("ano");
-        double preco = Double.parseDouble(request.getParameter("preco"));
+        String descricao = request.getParameter("descricao");
+        Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+        double preco_compra = Double.parseDouble(request.getParameter("preco_compra"));
+        double preco_venda = Double.parseDouble(request.getParameter("preco_venda"));
 
-        Produto cliente = new Produto(id, nome, autor, editora, ano, estoque, preco);
-        cliente.setId(id);
+        Produto cliente = new Produto(quantidade, nome, descricao, 0, 0, 0, dt_cadastro);
+        
 
         //String erro = ValidadorCliente.validarCliente(cliente);
         String erro = "";
