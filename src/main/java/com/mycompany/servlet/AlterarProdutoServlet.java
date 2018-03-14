@@ -32,6 +32,12 @@ public class AlterarProdutoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       HttpSession sessao = request.getSession();
+        if (sessao == null || sessao.getAttribute("usuario") == null) {
+            request.setAttribute("mensagemErro", "Você precisa logar ! ");
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
 
         }
@@ -42,7 +48,7 @@ public class AlterarProdutoServlet extends HttpServlet {
         double preco_venda = Double.parseDouble(request.getParameter("preco_venda"));
         
 
-        Produto produto = new Produto(quantidade, nome, descricao, 0, 0, 0, dt_cadastro);
+        Produto produto = new Produto(nome, descricao, preco_compra, preco_venda, 0, d);
 
         produto.setNome(nome);
         produto.setDescricao(descricao);

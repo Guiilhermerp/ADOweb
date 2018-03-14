@@ -31,11 +31,10 @@ public class AdicionarProduto extends HttpServlet {
 
         Produto produto = ProdutoDAO.obterProduto(id);
 
-        sessao.setAttribute("produto", produto);
+        sessao.setAttribute("nome", produto);
         sessao.setAttribute("idProduto", produto.getId());
         sessao.setAttribute("nomeProduto", produto.getNome());
-   //     response.sendRedirect(request.getContextPath() + "/venda.jsp");
-
+  
     }
 
 }

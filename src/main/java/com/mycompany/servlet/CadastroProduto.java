@@ -63,13 +63,13 @@ public class CadastroProduto extends HttpServlet {
         double preco_venda = -1;
         
         try {
-            quantidade = Integer.parseInt(request.getParameter("estoque"));
-            preco_venda = Double.parseDouble(request.getParameter("preco"));
+            quantidade = Integer.parseInt(request.getParameter("quantidade"));
+            preco_venda = Double.parseDouble(request.getParameter("preco_venda"));
         } catch (Exception e) {
 
         }
 
-        Produto produto = new Produto(quantidade, nome, descricao, preco_venda, preco_venda, quantidade, dt_cadastro);
+        Produto produto = new Produto(quantidade, nome, descricao, preco_venda, preco_venda, quantidade);
 
         produto.setNome(nome);
         produto.setDescricao(descricao);
