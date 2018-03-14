@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Vitor
+ * @author guilherme.gcosta6
  */
 @WebServlet(name = "EditarProduto", urlPatterns = {"/editar-produto"})
 public class EditarProduto extends HttpServlet {

@@ -32,12 +32,6 @@ public class AlterarProdutoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       HttpSession sessao = request.getSession();
-        if (sessao == null || sessao.getAttribute("usuario") == null) {
-            request.setAttribute("mensagemErro", "Você precisa logar ! ");
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
 
         }

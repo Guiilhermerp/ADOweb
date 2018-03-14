@@ -18,44 +18,28 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Vitor
+ * @author guilherme.gcosta6
  */
 @WebServlet(name = "AdicionarProduto", urlPatterns = {"/AdicionarProduto"})
 public class AdicionarProduto extends HttpServlet {
 
-    
-
-   
     //@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
-        request.setAttribute("usuario", sessao.getAttribute("usuario"));
-        
+        Integer id = Integer.parseInt(request.getParameter("idProduto"));
 
-        if (sessao == null || sessao.getAttribute("usuario") == null) {
-            request.setAttribute("mensagemErro", "Você precisa logar ! ");
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
+        Produto produto = ProdutoDAO.obterProduto(id);
 
-        }
+        sessao.setAttribute("produto", produto);
+        sessao.setAttribute("idProduto", produto.getId());
+        sessao.setAttribute("nomeProduto", produto.getNome());
+   //     response.sendRedirect(request.getContextPath() + "/venda.jsp");
 
-        try {
+    }
 
-            
-            Integer id = Integer.parseInt(request.getParameter("idProduto"));
-
-            Produto produto = ProdutoDAO.obterProduto(id);
-           
-            sessao.setAttribute("produto", produto);
-            sessao.setAttribute("idProduto", produto.getId());
-            sessao.setAttribute("nomeProduto", produto.getNome());
-            response.sendRedirect(request.getContextPath() + "/venda.jsp");
-
-            //RequestDispatcher dispatcher = request.getRequestDispatcher("clienteConsultado.jsp");
-            //dispatcher.forward(request, response);
-        } catch (Exception e) {
+}
+catch (Exception e) {
         }
     }
 
